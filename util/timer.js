@@ -8,7 +8,7 @@ const timer=function (fn,frequency,name,args,ctx) {
     ctx=ctx?ctx:null;
     args=Array.isArray(args)?args:[args];
     let start=Date.now();
-    for(let i=0;i<frequency-1;i++){
+    for(let i=1;i<=frequency;i++){
         fn.apply(ctx,args)
     }
     let end=Date.now();

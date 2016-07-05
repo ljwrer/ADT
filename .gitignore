@@ -14,3 +14,4 @@ gen### Example user template template
 *.iml
 out
 gen
+node_modules
