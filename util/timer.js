@@ -2,16 +2,28 @@
  * Created by Ray on 2016/6/13.
  */
 "use strict";
-const timer=function (fn,frequency,name,args,ctx) {
-    frequency=frequency?frequency:1;
-    name=name?name:"function";
-    ctx=ctx?ctx:null;
-    args=Array.isArray(args)?args:[args];
-    let start=Date.now();
-    for(let i=1;i<=frequency;i++){
-        fn.apply(ctx,args)
+const Timer={
+    init:function ({fn,freq=1,name="unNamed function",args=[],ctx=null}) {
+        if(!(typeof fn==="function")){
+            throw new TypeError("fn should be a function");
+        }
+        this.test={fn,freq,name,args,ctx};
+        return this;
+    },
+    exec:function () {
+        const {freq,fn,ctx,args}=this.test;
+        for(let i=1;i<=freq;i++){
+            fn.apply(ctx,args)
+        }
+    },
+    go:function () {
+        const start=Date.now();
+        this.exec();
+        const end=Date.now();
+        const time=end-start;
+        const message=this.test.name+":"+time;
+        console.log(message);
+        return message;
     }
-    let end=Date.now();
-    console.log(name+":"+(end-start));
 };
-module.exports=timer;
+module.exports=Timer;

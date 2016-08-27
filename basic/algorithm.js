@@ -2,7 +2,7 @@
  * Created by Ray on 2016/7/4.
  */
 "use strict";
-const timer=require('../util/timer');
+const Timer=require('../util/timer');
 const seed=require('../util/seed');
 const maxSubSeqSum1=function (A,N) {
     let max=0;
@@ -93,13 +93,17 @@ const maxSubSeqSum4=function (A,N) {
     return maxSum;
 };
 
-let arr=seed(1000,1000);
+const arr=seed(1000,1000);
+const argsForTest=[arr,arr.length];
+const functionForTest=[maxSubSeqSum1,maxSubSeqSum2,maxSubSeqSum3,maxSubSeqSum4];
+const nameForTest='maxSubSeqSum';
+for(let i=0;i<4;i++){
+    const timer=Object.create(Timer);
+    timer.init({
+        fn:functionForTest[i],
+        name:nameForTest+(i+1),
+        args:argsForTest
+    });
+    timer.go();
+}
 
-// console.log(maxSubSeqSum1(arr,arr.length));
-// console.log(maxSubSeqSum2(arr,arr.length));
-// console.log(maxSubSeqSum3(arr,arr.length));
-// console.log(maxSubSeqSum4(arr,arr.length));
-timer(maxSubSeqSum1,1,'maxSubSeqSum1',[arr,arr.length]);
-timer(maxSubSeqSum2,1,'maxSubSeqSum2',[arr,arr.length]);
-timer(maxSubSeqSum3,1,'maxSubSeqSum3',[arr,arr.length]);
-timer(maxSubSeqSum4,1,'maxSubSeqSum4',[arr,arr.length]);
