@@ -79,6 +79,7 @@ LinkedList.prototype.delete=function (index) {
         deleteNode=null;
     }
 };
+module.exports=LinkedList;
 let link1=new LinkedList();
 link1.insert(0,0);
 link1.insert(1,1);
