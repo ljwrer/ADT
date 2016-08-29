@@ -67,23 +67,24 @@ LinkedList.prototype.insert=function (data,index) {
         }
     }
 };
-LinkedList.prototype.delete=function (index) {
+LinkedList.prototype.Delete=function (index) {
     if(index===1){
         if(this.head.next!==null){
             this.head.next=this.head.next.next;
         }else {
-            return null;
+            throw new Error("链表为空");
         }
-    }
-    const beforeNode=this.FindKth(index-1);
-    if(beforeNode===null){
-        throw new Error("没有找到索引",index-1)
-    }else if(beforeNode.next===null){
-        throw new Error("没有找到索引",index)
     }else {
-        let deleteNode=beforeNode.next;
-        beforeNode.next=deleteNode.next;
-        deleteNode=null;
+        const beforeNode=this.FindKth(index-1);
+        if(beforeNode===null){
+            throw new Error("没有找到索引",index-1)
+        }else if(beforeNode.next===null){
+            throw new Error("没有找到索引",index)
+        }else {
+            let deleteNode=beforeNode.next;
+            beforeNode.next=deleteNode.next;
+            deleteNode=null;
+        }
     }
 };
 module.exports=LinkedList;
@@ -91,5 +92,5 @@ let link1=new LinkedList();
 link1.insert(1,1);
 link1.insert(2,2);
 link1.insert(3,1);
-link1.delete(1);
+link1.Delete(1);
 
