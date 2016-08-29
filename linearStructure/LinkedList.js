@@ -2,32 +2,37 @@
  * Created by Ray on 2016/7/25.
  */
 "use strict";
-const arr=[];
-arr[0]=1;
-arr[1023]=3;
-
-function LinkedNode(data) {
+/**
+ * @typedef node for linkedList
+ */
+function LinkedNode(data,next=null) {
     this.data=data;
-    this.next=null;
+    this.next=next;
 }
-
+/**
+ * @typedef linkedList
+ */
 function LinkedList() {
-    this.head=null;
+    this.head={next:null};
 }
 LinkedList.prototype.Length=function () {
     let i=0;
     let head=this.head;
-    while (head){
+    while (head.next){
         head=head.next;
         i++;
     }
     return i;
 };
+/**
+ * @param index start from 1
+ * @returns LinkedNode or null
+ */
 LinkedList.prototype.FindKth=function (index) {
     let i=0;
     let head=this.head;
     let ret=null;
-    while (head!=null&&i<index){
+    while (head.next!=null&&i<index){
         head=head.next;
         i++;
     }
@@ -36,24 +41,26 @@ LinkedList.prototype.FindKth=function (index) {
     }
     return ret;
 };
+/**
+ * @returns {{next: null}|*|LinkedNode}
+ */
 LinkedList.prototype.Find=function (item) {
     let i=0;
     let head=this.head;
-    while (head!=null&&head.data!==item){
+    while (head.next!=null&&head.next.data!==item){
         head=head.next;
     }
     return head;
 };
 LinkedList.prototype.insert=function (data,index) {
-    if(index===0){
-        let node=new LinkedNode(data);
-        this.head=node;
+    if(index===1){
+        let node=new LinkedNode(data,this.head.next);
+        this.head.next=node;
         return this.head;
     }else {
         const beforeNode=this.FindKth(index-1);
         if(beforeNode!==null){
-            const node=new LinkedNode(data);
-            node.next=beforeNode.next;
+            const node=new LinkedNode(data,beforeNode.next);
             beforeNode.next=node;
         }else{
             return null;
@@ -61,9 +68,9 @@ LinkedList.prototype.insert=function (data,index) {
     }
 };
 LinkedList.prototype.delete=function (index) {
-    if(index===0){
-        if(this.head!==null){
-            this.head=this.head.next;
+    if(index===1){
+        if(this.head.next!==null){
+            this.head.next=this.head.next.next;
         }else {
             return null;
         }
@@ -81,7 +88,6 @@ LinkedList.prototype.delete=function (index) {
 };
 module.exports=LinkedList;
 let link1=new LinkedList();
-link1.insert(0,0);
 link1.insert(1,1);
 link1.insert(2,2);
 link1.insert(3,1);
