@@ -2,6 +2,7 @@
  * Created by Ray on 2016/7/25.
  */
 "use strict";
+const empty = require('../util/empty');
 /**
  * @typedef node for linkedList
  */
@@ -15,7 +16,8 @@ function LinkedNode(data,next=null) {
 function LinkedList() {
     this.head={next:null};
 }
-LinkedList.prototype.Length=function () {
+empty(LinkedList);
+LinkedList.prototype.Length = function () {
     let i=0;
     let head=this.head;
     while (head.next){
