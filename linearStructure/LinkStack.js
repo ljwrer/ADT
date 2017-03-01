@@ -2,7 +2,7 @@
  * Created by Ray on 2016/8/28.
  */
 /*
-* 只能使用头节点，尾节点删除有问题
+* 只能使用头节点，尾节点删除有问题,单向链表删除时回不到前面
 * */
 const LinkedList=require('./LinkedList');
 /**

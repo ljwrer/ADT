@@ -2,21 +2,18 @@
  * Created by Ray on 2016/7/25.
  */
 "use strict";
-const empty = require('../util/empty');
+
+const LinkedNode = require('./LinkedNode');
 /**
- * @typedef node for linkedList
- */
-function LinkedNode(data,next=null) {
-    this.data=data;
-    this.next=next;
-}
-/**
- * @typedef linkedList
+ * @typedef LinkedList
  */
 function LinkedList() {
     this.head={next:null};
 }
-empty(LinkedList);
+
+/**
+ * @return {number}
+ */
 LinkedList.prototype.Length = function () {
     let i=0;
     let head=this.head;
@@ -56,14 +53,12 @@ LinkedList.prototype.Find=function (item) {
 };
 LinkedList.prototype.insert=function (data,index) {
     if(index===1){
-        let node=new LinkedNode(data,this.head.next);
-        this.head.next=node;
+        this.head.next=new LinkedNode(data, this.head.next);
         return this.head;
     }else {
         const beforeNode=this.FindKth(index-1);
         if(beforeNode!==null){
-            const node=new LinkedNode(data,beforeNode.next);
-            beforeNode.next=node;
+            beforeNode.next=new LinkedNode(data, beforeNode.next);
         }else{
             return null;
         }

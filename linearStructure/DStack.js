@@ -1,5 +1,6 @@
 /**
  * Created by Ray on 2016/8/27.
+ * 一个数组实现两个堆栈
  */
 class DStack {
     constructor(maxSize){
