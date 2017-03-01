@@ -90,4 +90,3 @@ link1.insert(1,1);
 link1.insert(2,2);
 link1.insert(3,1);
 link1.Delete(1);
-
