@@ -29,6 +29,7 @@ const subNullObject = new SubNull(1);
 console.log(`subNullObject:${subNullObject.a}`);
 class SubNull2 extends Null{
     constructor(a){
+        super();
         this.a =a;
     }
 }
