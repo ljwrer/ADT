@@ -1,8 +1,10 @@
 /**
  * Created by Ray on 2016/8/27.
  */
-class Stack {
+const Null = require('../util/empty').Null;
+class Stack extends Null{
     constructor(maxSize){
+        super();
         this.maxSize=maxSize;
         this.top=-1;
         this.data=[];

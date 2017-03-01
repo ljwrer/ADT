@@ -4,8 +4,10 @@
 /**
  * @typedef node for linkedList
  */
-class LinkedNode{
+const Null = require('../util/empty').Null;
+class LinkedNode extends Null{
     constructor(data,next=null) {
+        super();
         this.data=data;
         this.next=next;
     }

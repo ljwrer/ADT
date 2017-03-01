@@ -2,7 +2,7 @@
  * Created by Ray on 2016/7/25.
  */
 "use strict";
-
+const empty = require('../util/empty');
 const LinkedNode = require('./LinkedNode');
 /**
  * @typedef LinkedList
@@ -10,7 +10,7 @@ const LinkedNode = require('./LinkedNode');
 function LinkedList() {
     this.head={next:null};
 }
-
+empty(LinkedList);
 /**
  * @return {number}
  */

@@ -4,12 +4,14 @@
 /*
 * 只能使用头节点，尾节点删除有问题,单向链表删除时回不到前面
 * */
+const Null = require('../util/empty').Null;
 const LinkedList=require('./LinkedList');
 /**
  * @description with LinkedList fulfilled
  */
-class LinkStack{
+class LinkStack extends Null{
     constructor(){
+        super();
         this.data=new LinkedList();
     }
     isEmpty(){

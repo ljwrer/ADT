@@ -2,8 +2,10 @@
  * Created by Ray on 2016/8/27.
  * 一个数组实现两个堆栈
  */
-class DStack {
+const Null = require('../util/empty').Null;
+class DStack extends Null{
     constructor(maxSize){
+        super();
         this.maxSize=maxSize;
         this.top1=-1;
         this.top2=maxSize;

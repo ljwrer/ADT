@@ -7,8 +7,10 @@
 * （2）仅使用n-1个数组空间
 *
  */
-class Queue{
+const Null = require('../util/empty').Null;
+class Queue extends Null{
     constructor(maxSize) {
+        super();
         this.maxSize = maxSize;
         this.front = 0;
         this.rear = 0;
