@@ -2,7 +2,7 @@
  * Created by Ray on 2017/3/3.
  */
 const Null = require('../util/empty').Null;
-class BinaryTree extends Null{
+class TreeNode extends Null{
     constructor(data,left = null,right = null){
         super();
         this.data = data;
@@ -10,4 +10,4 @@ class BinaryTree extends Null{
         this.right = right;
     }
 }
-module.exports = BinaryTree;
+module.exports = TreeNode;

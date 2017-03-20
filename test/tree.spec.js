@@ -2,7 +2,7 @@
  * Created by Ray on 2017/3/3.
  */
 const assert = require('chai').assert;
-const binarySearch = require('../tree/binaryTree');
+const binarySearch = require('../tree/binarySearch');
 describe('tree',function () {
     describe('binarySearch',function () {
         let arr;
