@@ -23,5 +23,11 @@ class Stack extends Null{
             return this.data[this.top--];
         }
     }
+    peek(){
+        return this.data[this.top]
+    }
+    isEmpty(){
+        return this.top === -1
+    }
 }
 module.exports=Stack;
