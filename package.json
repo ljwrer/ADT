@@ -1,25 +1,26 @@
 {
-    "name": "abstract-data-type",
-    "version": "1.0.0",
-    "description": "",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/ljwrer/ADT.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/ljwrer/ADT/issues"
-    },
-    "homepage": "https://github.com/ljwrer/ADT#readme",
-    "dependencies": {
-        "immutable": "^3.8.1",
-        "chai": "latest"
-    },
-    "devDependencies": {
-        "mocha": "^3.2.0"
-    },
-    "scripts": {
-        "test": "mocha"
-    }
+  "name": "abstract-data-type",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ljwrer/ADT.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ljwrer/ADT/issues"
+  },
+  "homepage": "https://github.com/ljwrer/ADT#readme",
+  "dependencies": {
+    "immutable": "^3.8.1",
+    "chai": "latest"
+  },
+  "devDependencies": {
+    "karma": "^1.5.0",
+    "mocha": "^3.2.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  }
 }

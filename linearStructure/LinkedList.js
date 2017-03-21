@@ -4,9 +4,6 @@
 "use strict";
 const empty = require('../util/empty');
 const LinkedNode = require('./LinkedNode');
-/**
- * @typedef LinkedList
- */
 function LinkedList() {
     this.head={next:null};
 }
@@ -83,6 +80,22 @@ LinkedList.prototype.Delete=function (index) {
             deleteNode=null;
         }
     }
+};
+const toArray = function (LL) {
+    let head = LL.head;
+    while (head.next){
+
+    }
+}
+LinkedList.prototype.toArray=function () {
+    let head = this.head;
+    const arr = [];
+    while (head.next){
+        const data = head.next.data;
+        arr.push(data);
+        head = head.next;
+    }
+    return arr;
 };
 module.exports=LinkedList;
 let link1=new LinkedList();
