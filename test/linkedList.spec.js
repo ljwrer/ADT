@@ -16,22 +16,22 @@ describe('linkedList',function () {
         it('should not be reverse when list is to short',function () {
             const list1 = createLinkedList(1);
             const result1 = reverseLinkedList(list1,10).toArray();
-            assert.isArray(result1,[1])
+            assert.deepEqual(result1,[1])
         });
         it('should not be reverse when times is to short',function () {
             const list1 = createLinkedList(5);
             const result1 = reverseLinkedList(list1,0).toArray();
-            assert.isArray(result1,[1,2,3,4,5])
+            assert.deepEqual(result1,[1,2,3,4,5])
         });
         it('should be reverse when times is full',function () {
             const list1 = createLinkedList(5);
             const result1 = reverseLinkedList(list1,4).toArray();
-            assert.isArray(result1,[5,4,3,2,1])
+            assert.deepEqual(result1,[5,4,3,2,1])
         });
         it('should be reverse general',function () {
             const list1 = createLinkedList(5);
             const result1 = reverseLinkedList(list1,2).toArray();
-            assert.isArray(result1,[3,2,1,4,5])
+            assert.deepEqual(result1,[3,2,1,4,5])
         });
     });
 });
