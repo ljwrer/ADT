@@ -1,6 +1,9 @@
 /**
  * Created by Ray on 2017/3/21.
  */
+/**
+ * 空树，或者任一结点左、右子树高度差的绝对值不超过1
+ */
 function AVLTree() {
 
     var Node = function(key){

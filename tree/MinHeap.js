@@ -1,19 +1,19 @@
 /**
- * Created by Ray on 2017/3/21.
+ * Created by Ray on 2017/3/22.
  */
 const Null = require('../util/empty').Null;
 /**
- * 最大堆
- * 完全二叉树，每个结点的元素值不小于其子结点的元素值
+ * 最小堆
+ * 完全二叉树，每个结点的元素值不大于其子结点的元素值
  */
-class MaxHeap extends Null {
-    constructor(maxData=Infinity, capacity = 100) {
+class MinHeap extends Null {
+    constructor(minData=-Infinity, capacity = 0) {
         super();
         this.elements = [];
         this.capacity = capacity;
         this.size = 0;
-        this.maxData = maxData;
-        this.elements.push(maxData);
+        this.maxData = minData;
+        this.elements.push(minData);
     }
 
     switchElement(i, j) {
@@ -26,7 +26,7 @@ class MaxHeap extends Null {
         if (this.isFull()) throw new Error('heap is full');
         this.elements[++this.size] = item;
         let i = this.size;
-        while (this.elements[i] > this.elements[parseInt(i / 2)]&&i>0) {
+        while (this.elements[i] < this.elements[parseInt(i / 2)]&&i>0) {
             this.elements[i] = this.elements[parseInt(i / 2)];
             this.elements[parseInt(i / 2)] = item;
             i = parseInt(i / 2);
@@ -41,7 +41,7 @@ class MaxHeap extends Null {
         return this.size === 0
     }
 
-    deleteMax() {
+    deleteMin() {
         if (this.size < 1) throw new Error('heap is empty');
         if (this.size === 1) {
             this.size = 0;
@@ -52,10 +52,10 @@ class MaxHeap extends Null {
         let i = 1;
         while (i * 2 <= this.size) {
             let child = 2 * i;
-            if (child < this.size && this.elements[child] < this.elements[child + 1]) {
+            if (child < this.size && this.elements[child] > this.elements[child + 1]) {
                 child++
             }
-            if (this.elements[i] < this.elements[child]) {
+            if (this.elements[i] > this.elements[child]) {
                 this.switchElement(i, child);
                 i = child
             } else {
@@ -68,10 +68,10 @@ class MaxHeap extends Null {
     siftDown(i){
         while (i * 2 <= this.size) {
             let child = i*2;
-            if (child < this.size && this.elements[child] < this.elements[child + 1]) {
+            if (child < this.size && this.elements[child] > this.elements[child + 1]) {
                 child++
             }
-            if (this.elements[i] < this.elements[child]) {
+            if (this.elements[i] > this.elements[child]) {
                 this.switchElement(i, child);
                 i = child
             } else {
@@ -89,4 +89,4 @@ class MaxHeap extends Null {
         }
     }
 }
-module.exports = MaxHeap;
+module.exports = MinHeap;
