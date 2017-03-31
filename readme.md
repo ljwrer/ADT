@@ -25,5 +25,7 @@ Node version:6.4.0
     - 最小生成树(最小生成树)
         - Prim算法
         - Kruskal算法
+    - 拓扑排序
+        - 关键路径问题(AOE)
         
     
