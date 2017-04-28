@@ -124,22 +124,75 @@ const selectionSort = (array,compare) =>{
         }
     }
 };
-const chooseSort = (array, compare) => {
-    for (let i = 0; i < array.length; i++) {
-        for (let j = i + 1; j < array.length; j++) {
-            if (compare(array[i], array[j])) {
-                switchElement.call(array, i, j);
-                console.log(array)
-            }
+const merge = (left,right,compare)=>{
+    const result = [];
+    let leftIndex = 0,
+        rightIndex = 0;
+    while (leftIndex<left.length&&rightIndex<right.length){
+        if(compare(right[rightIndex],left[leftIndex])){
+            result.push(left[leftIndex++])
+        }else {
+            result.push(right[rightIndex++])
         }
     }
+    while (leftIndex<left.length){
+        result.push(left[leftIndex++])
+    }
+    while (rightIndex<right.length){
+        result.push(right[rightIndex++])
+    }
+    console.log(result);
+    return result
+};
+const mergeSort = (array,compare)=>{
+    if(array.length === 1) return array
+    const mid = Math.floor(array.length/2);
+    const left = array.slice(0,mid);
+    const right = array.slice(mid);
+    return merge(mergeSort(left,compare),mergeSort(right,compare),compare)
+};
+const median3 = (array,compare) =>{
+    const mid = Math.floor(array.length/2);
+    if(compare(array[0],array[mid])){
+        switchElement.call(array,0,mid)
+    }
+    if(compare(array[mid],array[array.length-1])){
+        switchElement.call(array,mid,array.length-1)
+    }
+    if(compare(array[0],array[mid])){
+        switchElement.call(array,0,mid)
+    }
+    return mid
+};
+const quickSort = (array,compare)=>{
+    if(array.length<=1) return array;
+    //TODO cutOff use insertionSort
+    const mid = median3(array,compare);
+    const median = array[mid];
+    const left = [];
+    const right = [];
+    for(let i=0;i<array.length;i++){
+        if(i === mid){
+            continue
+        }
+        if(compare(median,array[i])){
+            left.push(array[i])
+        }else {
+            right.push(array[i])
+        }
+    }
+    array = quickSort(left,compare).concat([median,...quickSort(right,compare)])
+    console.log(array);
+    return array
 };
 const arr = [45, 22, 11, 90, 76, 21, 12, 67];
-shellSort(arr, (a, b) => a - b > 0);
+quickSort(arr, (a, b) => a - b > 0);
+console.log(quickSort(arr, (a, b) => a - b > 0));
 module.exports = {
     bubbleSort,
     insertionSort,
     shellSort,
     heapSort,
-    selectionSort
+    selectionSort,
+    mergeSort
 };
