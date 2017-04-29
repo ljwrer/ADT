@@ -3,29 +3,20 @@
  */
 const arr = [
     {
-        key:'f'
+        key:'c'
     },
     {
         key:'d'
     },
     {
-        key:'c'
-    },
-    {
-        key:'a'
+        key:'e'
     },
     {
         key:'b'
     },
     {
-        key:'g'
+        key:'a'
     },
-    {
-        key:'h'
-    },
-    {
-        key:'e'
-    }
 ];
 const table = [];
 for(let i = 0;i<arr.length;i++){
@@ -42,22 +33,39 @@ for(let i = 1;i<table.length;i++){
 arr.forEach(item=>{
     console.log(item)
 })
-console.log('\r\n')
-table.forEach(item=>{
-    console.log(item)
-});
+console.log('---')
+console.log(table)
+const hasCircle = function (arr) {
+    let ret = -1;
+    arr.some((item,index)=>{
+        if(item!==index){
+            ret = index
+            return true
+        }
+    })
+    console.log(ret)
+    return ret
+}
 const physicalSort = function () {
     let i = 0;
-    let temp;
-    let j = i;
-    // while (true){
-        temp = arr[table[j]];
-        while(table[j]!==i){
-            arr[j] =  arr[table[j]]
-            j = table[j]
+    while (hasCircle(table)>-1){
+        i = hasCircle(table)
+        let temp = arr[i];
+        let end = i;
+        while(table[i]!==i){
+            const next = table[i];
+            //move item
+            arr[i] =  arr[next]
+            //tag moved item
+            table[i] = i;
+            end = i;
+            //do next move
+            i = next;
         }
-        arr[j] = temp
-    // }
+        arr[end] = temp
+    }
 };
 physicalSort();
+console.log(table)
 console.log(arr)
+
