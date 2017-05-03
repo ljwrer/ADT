@@ -6,3 +6,12 @@
  *
  *
  */
+const hash = (str,tableSize=10e8)=>{
+    let h = 0;
+    let i = 0;
+    while (i<str.length){
+        h = (h<<5)+str.charCodeAt(i++)
+    }
+    return h%tableSize
+};
+
