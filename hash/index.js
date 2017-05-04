@@ -40,4 +40,7 @@ const get = function (key) {
     return (h+i)%table.length
 };
 keys.forEach(set);
+keys.forEach(function (key) {
+    console.log(get(key))
+});
 
