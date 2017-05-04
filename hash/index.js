@@ -21,12 +21,23 @@ const set = function (key) {
     let i = 0;
     // 线性探测
     while(table[(h+i)%table.length]){
-        i++;
         if(i>table.length){
             throw Error('hashTable is full')
         }
+        i++;
     }
     table[(h+i)%table.length] = key
 };
+const get = function (key) {
+    const h = hash(key);
+    let i = 0;
+    while (table[(h+i)%table.length]!==key){
+        if(i>table.length){
+            return -1
+        }
+        i++;
+    }
+    return (h+i)%table.length
+};
 keys.forEach(set);
-console.log(table);
+
